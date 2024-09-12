@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="/home/<%= user.id %>/admin/addProfile"><button>Profile</button></a>
+    <a href="/home/<%= user.id %>/admin/addFlight"
+      ><button>Add New Flight</button></a
+    >
+    <a href="/logout"><button>Log Out</button></a>
+    <hr />
+
+    <table border="4">
+      <thead>
+        <tr>
+          <td>Image Flight</td>
+          <td>airline Name</td>
+          <td>Destination</td>
+          <td>Origin</td>
+          <td>Availabel Seat</td>
+          <td>Price</td>
+          <td>Type</td>
+          <td>Arrived</td>
+          <td>Date Of Flight</td>
+          <td>Action</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% flight.forEach(el => { %>
+        <tr>
+          <td><img src="<%= el.imageURL %>" alt="Picture" /></td>
+          <td><%= el.airlineName %></td>
+          <td><%= el.destination %></td>
+          <td><%= el.origin %></td>
+          <td><%= el.availabeSeat %></td>
+          <td><%= rupiah(el.price) %></td>
+          <td><%= el.type %></td>
+          <td><%= waktu(el.arrived) %></td>
+          <td><%= date(el.dateFlight) %></td>
+          <td>
+            <a href="/home/<%= user.id %>/admin/addFlight/<%= el.id %>"
+              ><button>Delete</button></a
+            >
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </body>
+</html>
