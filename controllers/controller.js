@@ -55,6 +55,18 @@ class Controller {
             res.send(error.message)
         }
     }
+
+    static async home(req, res){
+        try {
+            const flights = await Flight.findAll()
+            
+            // res.send(flights)
+            res.render('home', {flights})
+        } catch (error) {
+            console.log(error);
+            res.send(error)
+        }
+    }
 }
 
 module.exports = Controller
