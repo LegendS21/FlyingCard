@@ -19,7 +19,11 @@ module.exports = (sequelize, DataTypes) => {
     destination: DataTypes.STRING,
     origin: DataTypes.STRING,
     availabeSeat: DataTypes.STRING,
-    price: DataTypes.INTEGER
+    price: DataTypes.INTEGER,
+    type: DataTypes.STRING,
+    arrived: DataTypes.TIME,
+    imageURL: DataTypes.TEXT,
+    dateFlight: DataTypes.DATE
   }, {
     sequelize,
     modelName: 'Flight',
