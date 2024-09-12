@@ -7,7 +7,7 @@
         "price": 2795000,
         "type": "Economy",
         "arrived": "22:15",
-        "imageURL": "",
+        "imageURL": "asset/sriwijaya air.jpeg",
         "dateFlight": "2024-09-13"
     },
     {
@@ -18,7 +18,7 @@
         "price": 2489000,
         "type": "Economy",
         "arrived":"14:50",
-        "imageURL": "../asset/batik air.jpeg",
+        "imageURL": "asset/lion air.jpeg",
         "dateFlight": "2024-09-13"
     },
     {
@@ -29,7 +29,7 @@
         "price": 1427500,
         "type": "Economy",
         "arrived":"15:50",
-        "imageURL": "../asset/citilink.jpg",
+        "imageURL": "asset/citilink.jpg",
         "dateFlight": "2024-09-13"
     },
     {
@@ -40,7 +40,7 @@
         "price": 1585000,
         "type": "Economy",
         "arrived":"16:20",
-        "imageURL": "../asset/",
+        "imageURL": "asset/pelita air.jpg",
         "dateFlight": "2024-09-13"
     },
     {
@@ -51,7 +51,7 @@
         "price": 1925900,
         "type": "Economy",
         "arrived":"17:50",
-        "imageURL": "../asset/",
+        "imageURL": "asset/Garuda-Indonesia.jpg",
         "dateFlight": "2024-09-13"
     },
     {
@@ -62,7 +62,7 @@
         "price": 1925900,
         "type": "Economy",
         "arrived":"18:50",
-        "imageURL": "../asset/",
+        "imageURL": "asset/adam air.jpg",
         "dateFlight": "2024-09-13"
     }
     
