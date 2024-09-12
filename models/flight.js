@@ -15,15 +15,141 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Flight.init({
-    airlineName: DataTypes.STRING,
-    destination: DataTypes.STRING,
-    origin: DataTypes.STRING,
-    availabeSeat: DataTypes.STRING,
-    price: DataTypes.INTEGER,
-    type: DataTypes.STRING,
-    arrived: DataTypes.TIME,
-    imageURL: DataTypes.TEXT,
-    dateFlight: DataTypes.DATE
+    airlineName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          //mengatur pesan error
+          args: true,
+          msg: 'airline name cannot be empty'
+        },
+        notNull: {
+          args: true,
+          msg: 'airline name cannot be null'
+        },
+      }
+    },
+    destination: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          //mengatur pesan error
+          args: true,
+          msg: 'destination cannot be empty'
+        },
+        notNull: {
+          args: true,
+          msg: 'destination cannot be null'
+        },
+      }
+    },
+    origin: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          //mengatur pesan error
+          args: true,
+          msg: 'origin cannot be empty'
+        },
+        notNull: {
+          args: true,
+          msg: 'origin cannot be null'
+        },
+      }
+    },
+    availabeSeat: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          //mengatur pesan error
+          args: true,
+          msg: 'first name cannot be empty'
+        },
+        notNull: {
+          args: true,
+          msg: 'first name cannot be null'
+        },
+      }
+    },
+    price: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          //mengatur pesan error
+          args: true,
+          msg: 'first name cannot be empty'
+        },
+        notNull: {
+          args: true,
+          msg: 'first name cannot be null'
+        },
+      }
+    },
+    type: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          //mengatur pesan error
+          args: true,
+          msg: 'first name cannot be empty'
+        },
+        notNull: {
+          args: true,
+          msg: 'first name cannot be null'
+        },
+      }
+    },
+    arrived: {
+      type: DataTypes.TIME,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          //mengatur pesan error
+          args: true,
+          msg: 'first name cannot be empty'
+        },
+        notNull: {
+          args: true,
+          msg: 'first name cannot be null'
+        },
+      }
+    },
+    imageURL: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          //mengatur pesan error
+          args: true,
+          msg: 'first name cannot be empty'
+        },
+        notNull: {
+          args: true,
+          msg: 'first name cannot be null'
+        },
+      }
+    },
+    dateFlight: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          //mengatur pesan error
+          args: true,
+          msg: 'first name cannot be empty'
+        },
+        notNull: {
+          args: true,
+          msg: 'first name cannot be null'
+        },
+      }
+    }
   }, {
     sequelize,
     modelName: 'Flight',

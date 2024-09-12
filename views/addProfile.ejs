@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Profile</h1>
+    <form action="" method="post">
+      <div>
+        <label for="">User Id</label>
+        <input type="text" name="<%= user.id %>" value="<%= user.username %>" disabled />
+      </div><br>
+      <div>
+        <label for="">full name</label>
+        <input type="text" name="fullname" id="" />
+      </div><br>
+      <div>
+        <label for="">gender</label>
+        <select name="gender" id="">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div><br>
+      <div>
+        <label for="">Phone Number</label>
+        <input type="number" name="phone" id="" />
+      </div><br>
+      <div>
+        <label for="">Email</label>
+        <input type="email" name="email" id="" />
+      </div><br>
+      <div>
+        <input type="submit" value="Save">
+      </div>
+    </form>
+  </body>
+</html>

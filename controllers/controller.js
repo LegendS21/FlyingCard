@@ -66,8 +66,14 @@ class Controller {
         try {
             let user = await User.findByPk(UserId)
             let flight = await Flight.findAll()
-            // res.send(flight)
-            res.render('adminForm', { user, flight, waktu, date, rupiah })
+            let profile = await Profile.findOne({
+                where: {
+                    UserId: UserId
+                },
+                include: { model: User }
+            })
+            // res.send(profile)
+            res.render('adminForm', { profile, user, flight, waktu, date, rupiah })
         } catch (error) {
             console.log(error)
             res.send(error.message)
@@ -114,6 +120,69 @@ class Controller {
                 where: { id: flightId }
             })
             res.redirect(`/home/${UserId}/admin`)
+        } catch (error) {
+            console.log(error)
+            res.send(error.message)
+        }
+    }
+    static async profileForm(req, res) {
+        const { UserId } = req.params
+        try {
+            let user = await User.findByPk(UserId)
+            let findprofile = await Profile.findOne({
+                where: {
+                    UserId: UserId
+                },
+                include: {
+                    model: User
+                }
+            })
+            if (findprofile) {
+                res.render('updateProfile', { findprofile })
+            } else {
+                res.render('addProfile', { user })
+            }
+            // res.send(findprofile)
+            // res.send(user)
+        } catch (error) {
+            console.log(error)
+            res.send(error.message)
+        }
+    }
+    static async saveProfile(req, res) {
+        const { UserId } = req.params
+        const { fullname, gender, phone, email } = req.body
+        try {
+            let user = await User.findByPk(UserId)
+            let findprofile = await Profile.findOne({
+                where: {
+                    UserId: UserId
+                },
+                include: {
+                    model: User
+                }
+            })
+            if (findprofile) {
+                await Profile.update(
+                    { UserId, fullname, gender, phone, email },
+                    { where: { UserId: UserId } },)
+            } else {
+                await Profile.create({ UserId, fullname, gender, phone, email })
+            }
+            if (user.role === 'admin') {
+                res.redirect(`/home/${UserId}/admin`)
+            }
+            else {
+                res.redirect(`/home/${UserId}/customer`)
+            }
+        } catch (error) {
+            console.log(error)
+            res.send(error.message)
+        }
+    }
+    static async updateFlight(req, res) {
+        try {
+            
         } catch (error) {
             console.log(error)
             res.send(error.message)
