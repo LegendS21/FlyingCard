@@ -6,7 +6,11 @@
     <title>Document</title>
   </head>
   <body>
-    <a href="/home/<%= user.id %>/admin/addProfile"><button>Profile</button></a>
+    <% if (profile) { %>
+    <a href="/home/<%= user.id %>/update"><button>Update Profile</button></a>
+    <% } else {%>
+    <a href="/home/<%= user.id %>/profile"><button>Add Profile</button></a>
+    <% } %>
     <a href="/home/<%= user.id %>/admin/addFlight"
       ><button>Add New Flight</button></a
     >
@@ -41,7 +45,7 @@
           <td><%= waktu(el.arrived) %></td>
           <td><%= date(el.dateFlight) %></td>
           <td>
-            <a href="/home/<%= user.id %>/admin/addFlight/<%= el.id %>"
+            <a href="/home/<%= user.id %>/admin/addFlight/<%= el.id %>/delete"
               ><button>Delete</button></a
             >
           </td>

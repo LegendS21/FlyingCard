@@ -16,6 +16,10 @@ router.use(function (req, res, next) {
     }
 })
 
+router.get('/home/:UserId/profile', Controller.profileForm)
+router.post('/home/:UserId/profile', Controller.saveProfile)
+router.get('/home/:UserId/update', Controller.profileForm)
+router.post('/home/:UserId/update', Controller.saveProfile)
 router.use(function (req, res, next) {
     if (req.session.user.role === 'admin') {
         next()
@@ -28,5 +32,7 @@ router.use(function (req, res, next) {
 router.get('/home/:UserId/admin', Controller.adminForm)
 router.get('/home/:UserId/admin/addFlight', Controller.addFlight)
 router.post('/home/:UserId/admin/addFlight', Controller.saveFlight)
-router.get('/home/:UserId/admin/addFlight/:flightId', Controller.removeFlight)
+router.get('/home/:UserId/admin/addFlight/:flightId/delete', Controller.removeFlight)
+router.get('/home/:UserId/admin/addFlight/:flightId/update', Controller.updateFlight)
+// router.get('/home/:UserId/admin/addFlight/:flightId/addPass', Controller.addPassToFlight) 
 module.exports = router
