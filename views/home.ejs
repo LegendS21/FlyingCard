@@ -1,147 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Art Collections</title>
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    /* Sticky navbar */
-    .sticky-top {
-      position: -webkit-sticky;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Art Collections</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Sticky navbar */
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
 
-    /* Customizing the navbar */
-    .navbar-custom {
-      background-color: #002f6c; /* Dark blue background */
-      padding: 1rem;
-    }
+      body {
+        background-image: url("asset/background.jpg");
+        /* Update the path to your actual image location */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        /* Ensure the image stays fixed while scrolling */
+        color: #060606;
+        /* Ensuring text color contrasts with background */
+      }
 
-    /* Navbar links */
-    .navbar-custom .nav-link {
-      color: white;
-    }
+      .sticky-top {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
 
-    .navbar-custom .nav-link:hover {
-      color: #00ffcc; /* Slight greenish hover effect */
-    }
+      /* Customizing the navbar */
+      .navbar-custom {
+        background-color: #002f6c;
+        /* Dark blue background */
+        padding: 1rem;
+      }
 
-    .navbar-custom .dropdown-toggle::after {
-      margin-left: 0.5rem;
-    }
+      /* Navbar links */
+      .navbar-custom .nav-link {
+        color: white;
+      }
 
-    /* Image in the navbar (e.g., flag) */
-    .navbar-custom .navbar-brand img {
-      height: 20px;
-      width: auto;
-    }
+      .navbar-custom .nav-link:hover {
+        color: #00ffcc;
+        /* Slight greenish hover effect */
+      }
 
-    /* Margin between login and register buttons */
-    .navbar-custom .btn-register {
-      margin-left: 10px;
-    }
+      .navbar-custom .dropdown-toggle::after {
+        margin-left: 0.5rem;
+      }
 
-    /* Custom colors for buttons */
-    .btn-login {
-      background-color: #007bff;
-      color: white;
-    }
+      /* Gambar logo yang diperbesar */
+      .navbar-custom .navbar-brand img {
+        height: 50px;
+        /* Ubah ukuran tinggi logo */
+        width: auto;
+      }
 
-    .btn-register {
-      background-color: #28a745;
-      color: white;
-    }
+      /* Margin antara login dan register buttons */
+      .navbar-custom .btn-register {
+        margin-left: 10px;
+      }
 
-    /* Search form styling */
-    .search-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 10px;
-    }
+      /* Custom colors for buttons */
+      .btn-login {
+        background-color: #007bff;
+        color: white;
+      }
 
-    .search-container input {
-      margin-right: 10px;
-      flex: 1;
-    }
-  </style>
-</head>
-<body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
-    <a class="navbar-brand" href="#">
-      <img src="../asset/logo.png" alt="FlyingCard">
-      Flying card
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="helpDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Help
-          </a>
-          <div class="dropdown-menu" aria-labelledby="helpDropdown">
-            <a class="dropdown-item" href="#">FAQ</a>
-            <a class="dropdown-item" href="#">Contact Us</a>
+      .btn-register {
+        background-color: #28a745;
+        color: white;
+      }
+
+      /* Search form styling */
+      .search-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+      }
+
+      .search-container input {
+        margin-right: 10px;
+        flex: 1;
+      }
+
+      /* Menyamakan ukuran gambar koleksi */
+      .card img {
+        width: 100%;
+        height: 200px;
+        /* Atur tinggi gambar agar seragam */
+        object-fit: cover;
+        /* Memastikan gambar dipotong secara proporsional tanpa mengubah aspek rasio */
+      }
+
+      /* Adding the uploaded background image */
+
+      /* Adding background color to the container to make content visible */
+      .container {
+        background: rgba(255, 255, 255, 0.85);
+        padding: 20px;
+        border-radius: 12px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+      <a class="navbar-brand" href="#">
+        <img src="../asset/logo.png" alt="FlyingCard" />
+        Flying card
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="helpDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Help
+            </a>
+            <div class="dropdown-menu" aria-labelledby="helpDropdown">
+              <a class="dropdown-item" href="#">FAQ</a>
+              <a class="dropdown-item" href="#">Contact Us</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Booking</a>
+          </li>
+          <li class="nav-item">
+            <a href="/login"><button class="btn btn-login">Login</button></a>
+          </li>
+          <li class="nav-item">
+            <a href="/register"
+              ><button class="btn btn-register">Register</button></a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Search functionality similar to the image -->
+    <div class="container search-container">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Dari"
+        value="Jakarta (JKTA)"
+      />
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Ke"
+        value="Padang (PDG)"
+      />
+      <input type="date" class="form-control" value="2024-09-12" />
+      <input type="date" class="form-control" value="2024-09-14" />
+      <button class="btn btn-primary">Search</button>
+    </div>
+
+    <!-- Rest of the content (your page) -->
+    <div class="container mt-4">
+      <!-- Header -->
+      <h2 class="mb-4"><a href="/">Flight Ticket</a></h2>
+
+      <!-- Art Collections -->
+      <div class="row">
+        <!-- Iterating through flight data to display 4 items per row -->
+        <% flights.forEach(el=> { %>
+        <div class="col-md-3 col-sm-6 mb-4">
+          <div class="card">
+            <a href="/details/<%= el.id %>">
+              <img src="<%= el.imageURL %>" class="card-img-top" alt="gambar" />
+            </a>
+            <div class="card-body">
+              <h5 class="card-title"><%= el.airlineName %></h5>
+              <p class="card-text">
+                From: <%= el.origin %> To: <%= el.destination %>
+              </p>
+              <p class="card-text">Class: <%= el.type %></p>
+              <p class="card-text">Available Seats <%= el.availabeSeat %></p>
+              <p class="card-text">Price: <%= el.price %></p>
+              <a href="/login?error=Please Login Dulu"
+                ><button class="btn btn-primary">See Detail</button></a
+              >
+            </div>
           </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Booking</a>
-        </li>
-        <li class="nav-item">
-            <a href="#"><button class="btn btn-login">Login</button></a>
-        </li>
-        <li class="nav-item">
-            <a href="#"><button class="btn btn-register">Register</button></a>
-        </li>
-      </ul>
+        </div>
+        <% }) %>
+      </div>
     </div>
-  </nav>
 
-  <!-- Search functionality similar to the image -->
-  <div class="container search-container">
-    <input type="text" class="form-control" placeholder="Dari" value="Jakarta (JKTA)">
-    <input type="text" class="form-control" placeholder="Ke" value="Padang (PDG)">
-    <input type="date" class="form-control" value="2024-09-12">
-    <input type="date" class="form-control" value="2024-09-14">
-    <button class="btn btn-primary">Search</button>
-  </div>
-
-  <!-- Rest of the content (your page) -->
-  <div class="container mt-4">
-    <!-- Header -->
-    <h2 class="mb-4"><a href="/">Flight Ticket</a></h2>
-
-    <!-- Art Collections -->
-    <div class="row">
-      <!-- First Art Item -->
-      <tbody>
-            <% flights.forEach(el => { %>
-                <div class="col-md-6">
-                  <div class="card mb-4">
-                    <img src= "<%= el.imageURL %>" class="card-img-top" alt="gambar">
-                    <div class="card-body">
-                      <h5 class="card-title"><%= el.airlineName %></h5>
-                      <button onclick="location.href='/arts/'" class="btn btn-primary">See Detail</button>
-                    </div>
-                  </div>
-                </div>
-            <% }) %>
-      </tbody>
-    </div>
-  </div>
-
-  <!-- Bootstrap JavaScript and dependencies -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
+    <!-- Bootstrap JavaScript and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
 </html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Buy Ticket</h1>
+    <table border="4">
+      <thead>
+        <tr>
+          <td>Image Flight</td>
+          <td>Air line Name</td>
+          <td>Origin</td>
+          <td>Destination</td>
+          <td>Availabel Seat</td>
+          <td>Price</td>
+          <td>Type Of Ticket</td>
+          <td>Arrive At</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><img src="<%= flight.imageURL %>" alt="Pic" /></td>
+          <td><%= flight.airlineName %></td>
+          <td><%= flight.origin %></td>
+          <td><%= flight.destination %></td>
+          <td><%= flight.availabeSeat %></td>
+          <td><%= rupiah(flight.price) %></td>
+          <td><%= flight.type %></td>
+          <td>
+            <%= date(flight.dateFlight) %> At <%= waktu(flight.arrived) %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <form action="" method="post">
+      <p>
+        <label for="">User name</label>
+        <input
+          type="text"
+          name="username"
+          value="<%= user.Profile.id %>"
+          readonly
+        />
+      </p>
+      <p>
+        <label for="">Total Seat</label>
+        <input type="number" name="totalSeat" value="1" id="1" readonly />
+      </p>
+      <p>
+        <label for="">Total Price</label>
+        <input
+          type="number"
+          name="totalPrice"
+          value="<%= flight.price %>"
+          id="<%= flight.price %>"
+          readonly
+        />
+      </p>
+      <p>
+        <label for="">Status payment</label>
+        <input
+          type="text"
+          name="statusPayment"
+          value="Pending"
+          id="Pending"
+          readonly
+        />
+      </p>
+      <p>
+        <input type="submit" value="Wanna Buy a Ticket?" />
+      </p>
+    </form>
+  </body>
+</html>
