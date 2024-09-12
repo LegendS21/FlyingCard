@@ -181,8 +181,32 @@ class Controller {
         }
     }
     static async updateFlight(req, res) {
+        const { UserId, flightId } = req.params
         try {
-            
+            let findFlight = await Flight.findOne({
+                where: {
+                    id: flightId
+                }
+            })
+            let Dated
+            if (findFlight) {
+                let newDate = date(findFlight.dateFlight)
+                let dated = newDate.split('/')
+                Dated = `${dated[2]}-${dated[1]}-${dated[0]}`
+            }
+            // res.send(findFlight)
+            res.render('updateFlight', { findFlight, waktu, date, rupiah, Dated })
+        } catch (error) {
+            console.log(error)
+            res.send(error.message)
+        }
+    }
+    static async saveUpdateFlight(req, res) {
+        const { UserId, flightId } = req.params
+        const { airlineName, destination, origin, availabeSeat, price, type, arrived, imageURL, dateFlight } = req.body
+        try {
+            await Flight.update({ airlineName, destination, origin, availabeSeat, price, type, arrived, imageURL, dateFlight }, { where: { id: flightId } })
+            res.redirect(`/home/${UserId}/admin`)
         } catch (error) {
             console.log(error)
             res.send(error.message)

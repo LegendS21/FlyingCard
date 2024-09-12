@@ -34,5 +34,5 @@ router.get('/home/:UserId/admin/addFlight', Controller.addFlight)
 router.post('/home/:UserId/admin/addFlight', Controller.saveFlight)
 router.get('/home/:UserId/admin/addFlight/:flightId/delete', Controller.removeFlight)
 router.get('/home/:UserId/admin/addFlight/:flightId/update', Controller.updateFlight)
-// router.get('/home/:UserId/admin/addFlight/:flightId/addPass', Controller.addPassToFlight) 
+router.post('/home/:UserId/admin/addFlight/:flightId/update', Controller.saveUpdateFlight)
 module.exports = router
