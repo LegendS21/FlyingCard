@@ -22,7 +22,7 @@ module.exports = {
         allowNull: false
       },
       availabeSeat: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         allowNull: false
       },
       price: {

@@ -6,6 +6,9 @@ router.post('/register', Controller.saveRegister)
 router.get('/login', Controller.loginForm)
 router.post('/login', Controller.loginSave)
 router.get('/logout', Controller.logoutForm)
+router.get('/home/logout', Controller.logoutHome)
+router.get('/home', Controller.home)
+
 router.use(function (req, res, next) {
     if (req.session.user) {
         next()
@@ -15,7 +18,11 @@ router.use(function (req, res, next) {
         res.redirect(`/login?error=${error}`)
     }
 })
-
+router.get('/home/:UserId/customer', Controller.homeUser)
+router.get('/home/:UserId/:flightId/transaction', Controller.buyTicketForm)
+router.post('/home/:UserId/:flightId/transaction', Controller.saveTicketForm)
+router.get('/home/:UserId/:flightId/ticket', Controller.buyForm)
+router.post('/home/:UserId/:flightId/ticket', Controller.saveBuy)
 router.get('/home/:UserId/profile', Controller.profileForm)
 router.post('/home/:UserId/profile', Controller.saveProfile)
 router.get('/home/:UserId/update', Controller.profileForm)

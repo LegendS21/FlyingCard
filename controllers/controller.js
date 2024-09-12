@@ -212,5 +212,132 @@ class Controller {
             res.send(error.message)
         }
     }
+    static async home(req, res) {
+
+        try {
+            const flights = await Flight.findAll()
+            // res.send(flights)
+
+            res.render('home', { flights })
+        } catch (error) {
+            console.log(error);
+            res.send(error)
+        }
+    }
+
+    static async homeUser(req, res) {
+        const { UserId } = req.params
+        try {
+            const flights = await Flight.findAll()
+
+            const user = await User.findByPk(UserId)
+            // res.send(user)
+            let profile = await Profile.findOne({
+                where: {
+                    UserId: UserId
+                }
+            })
+            res.render('homeUsers', { flights, user, profile })
+        } catch (error) {
+            console.log(error);
+            res.send(error)
+        }
+    }
+    static async buyTicketForm(req, res) {
+        const { UserId, flightId } = req.params
+        try {
+            let user = await User.findOne({
+                where: {
+                    id: UserId,
+                },
+                include: Profile
+            })
+            let flight = await Flight.findOne({
+                where: {
+                    id: flightId
+                }
+            })
+            // res.send({user,flight})
+            res.render('buyTicket', { user, flight, waktu, date, rupiah })
+        } catch (error) {
+            console.log(error);
+            res.send(error)
+        }
+    }
+    static async logoutHome(req, res) {
+        try {
+            req.session.destroy(err => {
+                if (err) {
+                    res.send(err);
+                } else {
+                    res.redirect('/home')
+                }
+            })
+        } catch (error) {
+            console.log(error)
+            res.send(error.message)
+        }
+    }
+    static async saveTicketForm(req, res) {
+        const { UserId, flightId } = req.params
+        const { totalSeat, totalPrice, statusPayment } = req.body
+        try {
+            let readprof = await User.findOne({
+                where: { id: UserId },
+                include: {
+                    model: Profile
+                }
+            })
+            // console.log(UserId);
+            let saveTrans = await Transaction.create({
+                ProfileId: readprof.Profile.id, totalSeat, totalPrice, statusPayment
+            })
+            res.redirect(`/home/${UserId}/${flightId}/ticket`)
+        } catch (error) {
+            console.log(error)
+            res.send(error.message)
+        }
+    }
+    static async buyForm(req, res) {
+        const { UserId, flightId } = req.params
+        try {
+            let readprof = await User.findOne({
+                where: { id: UserId },
+                include: {
+                    model: Profile,
+                    include: Transaction
+                }
+            })
+            let flight = await Flight.findOne({
+                where: {
+                    id: flightId
+                }
+            })
+            // res.send()
+            res.render('buyForm', { readprof, flight, waktu, date, rupiah })
+        } catch (error) {
+            console.log(error)
+            res.send(error.message)
+        }
+    }
+    static async saveBuy(req, res) {
+        const { UserId, flightId } = req.params
+        const { TransactionId, passanger, NIK, dateOfBirth, gender, baggage } = req.body
+        try {
+            let create = await Ticket.create({
+                TransactionId: TransactionId, FlightId: flightId, passanger, NIK, dateOfBirth, gender, baggage
+            })
+            // let destroy = await Transaction.destroy({
+            //     where: {
+            //         id: TransactionId
+            //     }
+            // })
+            await Flight.increment({ availabeSeat: -1 }, { where: { id: flightId } })
+            res.redirect(`/home/${UserId}/customer`)
+        } catch (error) {
+            console.log(error)
+            res.send(error.message)
+        }
+    }
 }
 module.exports = Controller

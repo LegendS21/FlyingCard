@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Input Profile Flight</h1>
+    <table border="2">
+      <tr>
+        <td>Image</td>
+        <td>Airline Name</td>
+        <td>Origin</td>
+        <td>Destination</td>
+        <td>availabeSeat</td>
+        <td>Price</td>
+        <td>Type Of Flight</td>
+        <td>Arrived At</td>
+      </tr>
+      <tr>
+        <td><img src="<%= flight.imageURL %>" alt="pic" /></td>
+        <td><%= flight.airlineName %></td>
+        <td><%= flight.origin %></td>
+        <td><%= flight.destination %></td>
+        <td><%= flight.availabeSeat %></td>
+        <td><%= rupiah(flight.price) %></td>
+        <td><%= flight.type %></td>
+        <td>
+          Arrive At<%=date(flight.dateFlight)%> in <%= waktu(flight.arrived) %>
+        </td>
+      </tr>
+    </table>
+    <form action="" method="post">
+      <p>
+        <label for="">TransactionId</label>
+        <input
+          type="text"
+          name="TransactionId"
+          value="<%= readprof.Profile.Transactions[0].id %>"
+          readonly
+        />
+      </p>
+      <p>
+        <label for="">Flight Id</label>
+        <input type="text" name="FlightId" value="<%= flight.id %>" readonly />
+      </p>
+      <p>
+        <label for="">Passanger</label>
+        <input type="text" name="passanger" />
+      </p>
+      <p>
+        <label for="">Nomor Induk Kependudukan</label>
+        <input type="number" name="NIK" />
+      </p>
+      <p>
+        <label for="">Date Of Birth</label>
+        <input type="date" name="dateOfBirth" />
+      </p>
+      <p>
+        <label for="">Gender</label>
+        <select name="gender" id="">
+          <option value="" selected disabled>-- select --</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </p>
+      <p>
+        <label for="">Baggage</label>
+        <input type="number" name="baggage" />
+      </p>
+      <p><input type="submit" value="Pay" /></p>
+    </form>
+  </body>
+</html>

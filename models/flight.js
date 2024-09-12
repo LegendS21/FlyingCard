@@ -61,7 +61,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     availabeSeat: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
         notEmpty: {

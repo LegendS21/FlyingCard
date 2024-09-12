@@ -1,60 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <% if (profile) { %>
-    <a href="/home/<%= user.id %>/update"><button>Update Profile</button></a>
-    <% } else {%>
-    <a href="/home/<%= user.id %>/profile"><button>Add Profile</button></a>
-    <% } %>
-    <a href="/home/<%= user.id %>/admin/addFlight"
-      ><button>Add New Flight</button></a
-    >
-    <a href="/logout"><button>Log Out</button></a>
-    <hr />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flight List</title>
 
-    <table border="4">
+<head>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Animasi untuk baris tabel */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.5s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Hover effect untuk tombol */
+    .btn-hover:hover {
+      transform: scale(1.05);
+      transition: transform 0.2s ease-in-out;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100">
+
+  <!-- Tombol Aksi -->
+  <div class="container mx-auto my-5 p-5 bg-white rounded-lg shadow-lg">
+    <div class="flex justify-center space-x-4 mb-6">
+      <% if (profile) { %>
+        <a href="/home/<%= user.id %>/update">
+          <button class="btn-hover bg-blue-500 text-white px-4 py-2 rounded">Update Profile</button>
+        </a>
+      <% } else { %>
+        <a href="/home/<%= user.id %>/profile">
+          <button class="btn-hover bg-blue-500 text-white px-4 py-2 rounded">Add Profile</button>
+        </a>
+      <% } %>
+
+      <a href="/home/<%= user.id %>/admin/addFlight">
+        <button class="btn-hover bg-green-500 text-white px-4 py-2 rounded">Add New Flight</button>
+      </a>
+
+      <a href="/logout">
+        <button class="btn-hover bg-red-500 text-white px-4 py-2 rounded">Log Out</button>
+      </a>
+    </div>
+  </div>
+
+  <!-- Tabel dengan Animasi -->
+  <div class="container mx-auto my-10 p-5 bg-white rounded-lg shadow-lg">
+    <h1 class="text-3xl font-bold mb-6 text-center text-blue-700">Flight List</h1>
+
+    <table class="min-w-full bg-white table-auto border-collapse">
       <thead>
-        <tr>
-          <td>Image Flight</td>
-          <td>airline Name</td>
-          <td>Destination</td>
-          <td>Origin</td>
-          <td>Availabel Seat</td>
-          <td>Price</td>
-          <td>Type</td>
-          <td>Arrived</td>
-          <td>Date Of Flight</td>
-          <td>Action</td>
+        <tr class="bg-blue-600 text-white">
+          <th class="py-3 px-4 text-left">Image</th>
+          <th class="py-3 px-4 text-left">Airline</th>
+          <th class="py-3 px-4 text-left">Destination</th>
+          <th class="py-3 px-4 text-left">Origin</th>
+          <th class="py-3 px-4 text-left">Seats</th>
+          <th class="py-3 px-4 text-left">Price</th>
+          <th class="py-3 px-4 text-left">Type</th>
+          <th class="py-3 px-4 text-left">Arrived</th>
+          <th class="py-3 px-4 text-left">Date</th>
+          <th class="py-3 px-4 text-left">Action</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="flightTableBody">
+        <!-- Baris tabel akan diisi dengan animasi -->
         <% flight.forEach(el => { %>
-        <tr>
-          <td><img src="<%= el.imageURL %>" alt="Picture" /></td>
-          <td><%= el.airlineName %></td>
-          <td><%= el.destination %></td>
-          <td><%= el.origin %></td>
-          <td><%= el.availabeSeat %></td>
-          <td><%= rupiah(el.price) %></td>
-          <td><%= el.type %></td>
-          <td><%= waktu(el.arrived) %></td>
-          <td><%= date(el.dateFlight) %></td>
-          <td>
-            <a href="/home/<%= user.id %>/admin/addFlight/<%= el.id %>/delete"
-              ><button>Delete</button></a
-            >
-            <a href="/home/<%= user.id %>/admin/addFlight/<%= el.id %>/update"
-                ><button>Update</button></a
-              >
+        <tr class="fade-in border-b hover:bg-gray-100">
+          <td class="py-2 px-4"><img src="<%= el.imageURL %>" alt="Flight Image" class="w-20 h-20 object-cover"></td>
+          <td class="py-2 px-4"><%= el.airlineName %></td>
+          <td class="py-2 px-4"><%= el.destination %></td>
+          <td class="py-2 px-4"><%= el.origin %></td>
+          <td class="py-2 px-4"><%= el.availabeSeat %></td>
+          <td class="py-2 px-4"><%= rupiah(el.price) %></td>
+          <td class="py-2 px-4"><%= el.type %></td>
+          <td class="py-2 px-4"><%= waktu(el.arrived) %></td>
+          <td class="py-2 px-4"><%= date(el.dateFlight) %></td>
+          <td class="py-2 px-4">
+            <a href="/home/<%= user.id %>/admin/addFlight/<%= el.id %>/delete">
+              <button class="btn-hover bg-red-500 text-white px-3 py-1 rounded">Delete</button>
+            </a>
+            <a href="/home/<%= user.id %>/admin/addFlight/<%= el.id %>/update">
+              <button class="btn-hover bg-green-500 text-white px-3 py-1 rounded">Update</button>
+            </a>
           </td>
         </tr>
         <% }) %>
       </tbody>
     </table>
-  </body>
+  </div>
+
+  <script>
+    // Animasi munculnya tabel baris per baris
+    document.addEventListener('DOMContentLoaded', function () {
+      const rows = document.querySelectorAll('.fade-in');
+      rows.forEach((row, index) => {
+        setTimeout(() => {
+          row.classList.add('visible');
+        }, index * 100); // Tambahkan delay untuk setiap baris
+      });
+    });
+  </script>
+
+</body>
+
 </html>

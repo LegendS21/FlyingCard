@@ -3,37 +3,72 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Profile Form</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
   </head>
-  <body>
-    <h1>Profile</h1>
-    <form action="" method="post">
-      <div>
-        <label for="">User Id</label>
-        <input type="text" name="<%= user.id %>" value="<%= user.username %>" disabled />
-      </div><br>
-      <div>
-        <label for="">full name</label>
-        <input type="text" name="fullname" id="" />
-      </div><br>
-      <div>
-        <label for="">gender</label>
-        <select name="gender" id="">
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-        </select>
-      </div><br>
-      <div>
-        <label for="">Phone Number</label>
-        <input type="number" name="phone" id="" />
-      </div><br>
-      <div>
-        <label for="">Email</label>
-        <input type="email" name="email" id="" />
-      </div><br>
-      <div>
-        <input type="submit" value="Save">
-      </div>
-    </form>
-  </body>
+  <body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+      <h1 class="text-2xl font-semibold mb-6 text-center">Profile</h1>
+      <form action="" method="post" class="space-y-4">
+        <div>
+          <label for="user-id" class="block text-sm font-medium text-gray-700">User ID</label>
+          <input
+            type="text"
+            name="<%= user.id %>"
+            value="<%= user.username %>"
+            disabled
+            class="mt-1 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          />
+        </div>
+        <div>
+          <label for="fullname" class="block text-sm font-medium text-gray-700">Full Name</label>
+          <input
+            type="text"
+            name="fullname"
+            id="fullname"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          />
+        </div>
+        <div>
+          <label for="gender" class="block text-sm font-medium text-gray-700">Gender</label>
+          <select
+            name="gender"
+            id="gender"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          >
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+        <div>
+          <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+          <input
+            type="number"
+            name="phone"
+            id="phone"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          />
+        </div>
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          />
+        </div>
+        <div>
+          <input
+            type="submit"
+            value="Save"
+            class="w-full py-2 px-4 bg-indigo-600 text-white font-medium rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-200 ease-in-out transform hover:scale-105"
+          />
+        </div>
+      </form>
+    </div>
+  </body>
 </html>
