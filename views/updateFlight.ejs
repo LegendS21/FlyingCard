@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Update Ticket By Admin</h1>
+    <form action="" method="post">
+      <div>
+        <label for="">airline Name</label>
+        <input type="text" name="airlineName" value="<%= findFlight.airlineName %>" />
+      </div>
+      <br />
+      <div>
+        <label for="">Destination</label>
+        <input type="text" name="destination" value="<%= findFlight.destination %>" />
+      </div>
+      <br />
+      <div>
+        <label for="">Origin</label>
+        <input type="text" name="origin" value="<%= findFlight.origin %>" />
+      </div>
+      <br />
+      <div>
+        <label for="">Availabel Seat</label>
+        <input type="number" name="availabeSeat" value="<%= findFlight.availabeSeat %>" />
+      </div>
+      <br />
+      <div>
+        <label for="">Price</label>
+        <input type="number" name="price" value="<%= findFlight.price %>" />
+      </div>
+      <br />
+      <div>
+        <label for="">Type Flight</label>
+        <select name="type" id="">
+          <option <%= findFlight.type === 'VIP' ? 'selected' : '' %> value="VIP">VIP</option>
+          <option <%= findFlight.type === 'Business' ? 'selected' : '' %> value="Business">Business</option>
+          <option <%= findFlight.type === 'Economy' ? 'selected' : '' %> value="Economy">Economy</option>
+        </select>
+      </div>
+      <br />
+      <div>
+        <label for="">Date Plane will arrive</label>
+        <input type="date" name="dateFlight" value="<%= Dated %>" />
+      </div>
+      <br />
+      <div>
+        <label for="">Time Plane On Stay stand by</label>
+        <input type="time" name="arrived" value="<%= findFlight.arrived %>" />
+      </div>
+      <br />
+      <div>
+        <label for="">Image Url</label>
+        <input type="text" name="imageURL" value="<%= findFlight.imageURL %>" />
+      </div><br>
+      <div>
+        <input type="submit" value="Add new Flight" />
+      </div><br>
+    </form>
+  </body>
+</html>
